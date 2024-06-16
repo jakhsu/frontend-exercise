@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "./AuthContext";
-import { set, z } from "zod";
+import { z } from "zod";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

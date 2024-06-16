@@ -2,7 +2,6 @@ import { createContext, useState, useEffect, PropsWithChildren } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios, { AxiosResponse } from 'axios';
 import { jwtDecode } from "jwt-decode";
-import { set } from 'zod';
 
 export interface AuthContextType {
     token: string | null;

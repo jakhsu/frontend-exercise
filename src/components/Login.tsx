@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "./AuthContext";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { z } from "zod";
