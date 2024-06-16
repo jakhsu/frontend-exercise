@@ -38,7 +38,7 @@ export const Login = () => {
             authContext.login(email, password).then(() => {
                 setSuccessModalOpen(true);
                 setTimeout(() => {
-                    navigate('/posts');
+                    navigate('/');
                 }, 1000);
             }).catch(() => {
                 setFailureModalOpen(true);

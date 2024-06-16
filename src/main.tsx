@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     </AuthProvider>,
     children: [
       {
-        path: 'posts/:page?',
+        path: '/:page?',
         element: <PrivateRoute><Posts /></PrivateRoute>
       },
       {

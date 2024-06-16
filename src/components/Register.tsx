@@ -40,7 +40,7 @@ export const Register = () => {
                 setRegisterResponseMsg(response.data.message);
                 setSuccessModalOpen(true);
                 setTimeout(() => {
-                    navigate('/posts');
+                    navigate('/');
                 }, 2000);
             })
         }

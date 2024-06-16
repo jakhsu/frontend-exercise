@@ -36,7 +36,7 @@ export const SinglePost = () => {
         <>
             <div className="w-full h-full flex gap-y-4 flex-col items-center">
                 <ActionHeader action={() => {
-                    navigate("/posts")
+                    navigate("/")
                 }} actionBtnText="Back" />
                 View Post
                 <Card className="flex flex-col min-w-96 p-12 gap-y-8 bg-white">
