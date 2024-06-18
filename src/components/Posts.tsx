@@ -140,8 +140,8 @@ export const Posts = () => {
     ] as const
 
     const newPostFormSchema = z.object({
-        title: z.string(),
-        content: z.string(),
+        title: z.string().trim().length(1),
+        content: z.string().trim().length(1),
         tags: z.array(z.string()).refine((tags) => {
             return tags.every(tag =>
                 allowedTags.some(allowedTag => allowedTag.value === tag)
@@ -155,8 +155,6 @@ export const Posts = () => {
     const newPostForm = useForm<z.infer<typeof newPostFormSchema>>({
         resolver: zodResolver(newPostFormSchema),
         defaultValues: {
-            title: "",
-            content: "",
             tags: []
         }
     })
