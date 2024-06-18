@@ -40,7 +40,9 @@ export const Register = () => {
                 setRegisterResponseMsg(response.data.message);
                 setSuccessModalOpen(true);
                 setTimeout(() => {
-                    navigate('/');
+                    authContext.login(email, password).then(() => {
+                        navigate('/');
+                    })
                 }, 2000);
             })
         }
