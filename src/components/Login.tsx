@@ -75,7 +75,7 @@ export const Login = () => {
                                     <FormItem>
                                         <FormLabel>Password</FormLabel>
                                         <FormControl>
-                                            <Input className="rounded-full border-primary border-[1.77px]" {...field} />
+                                            <Input type="password" className="rounded-full border-primary border-[1.77px]" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
