@@ -34,6 +34,7 @@ export const Posts = () => {
     const [editPostModalOpen, setEditPostModalOpen] = useState(false);
     const [refresh, setRefresh] = useState(false);
     const [role, setRole] = useState<string | null>(null);
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
     const getAllPosts = (token: string, page: number, limit: number) => {
         return axios.get(`${baseURL}/posts`, {
@@ -261,9 +262,9 @@ export const Posts = () => {
                                 setEditPostModalOpen(true)
                             }}
                                 onDelete={(post) => {
-                                    deletePost(post.id)?.then(() => {
-                                        setRefresh(!refresh)
-                                    })
+                                    setCurrentPost(post)
+                                    setDeleteModalOpen(true)
+
                                 }}
 
                             />
@@ -493,6 +494,23 @@ export const Posts = () => {
                             </div>
                         </form>
                     </Form>
+                </DialogContent>
+            </Dialog>
+            <Dialog open={deleteModalOpen} onOpenChange={setDeleteModalOpen}>
+                <DialogContent className="items-center">
+                    <DialogHeader className="space-y-4">
+                        <DialogTitle className="text-destructive font-normal text-center">{currentPost?.title}</DialogTitle>
+                        <span className="text-center">Are you sure you want to delete this post?</span>
+                    </DialogHeader>
+                    <div className="justify-center flex gap-x-4">
+                        <Button size={'sm'} variant={'primary-muted'} onClick={() => { setDeleteModalOpen(false) }}>Cancel</Button>
+                        <Button size={'sm'} variant={'destructive'} onClick={() => {
+                            currentPost?.id && deletePost(currentPost?.id)!.then(() => {
+                                setRefresh(!refresh)
+                                setDeleteModalOpen(false)
+                            })
+                        }}>Delete</Button>
+                    </div>
                 </DialogContent>
             </Dialog>
         </>
