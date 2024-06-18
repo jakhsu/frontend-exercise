@@ -68,7 +68,7 @@ export const Register = () => {
                 <CardHeader>
                     <CardTitle className="text-center py-4">Register Page</CardTitle>
                 </CardHeader>
-                <CardContent className="px-16">
+                <CardContent className="px-8 md:px-12 lg:px-16">
                     <Form {...registerForm}>
                         <form onSubmit={registerForm.handleSubmit(onSubmit)} className="space-y-8">
                             <FormField

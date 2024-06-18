@@ -52,7 +52,7 @@ export const Login = () => {
                 <CardHeader>
                     <CardTitle className="text-center py-4">Login Page</CardTitle>
                 </CardHeader>
-                <CardContent className="px-16">
+                <CardContent className="px-8 md:px-12 lg:px-16">
                     <Form {...loginForm}>
                         <form onSubmit={loginForm.handleSubmit(onSubmit)} className="space-y-8">
                             <FormField
