@@ -44,6 +44,10 @@ export const Register = () => {
                         navigate('/');
                     })
                 }, 2000);
+            }).catch(e => {
+                registerForm.setError("email", {
+                    message: e.response.data.error
+                })
             })
         }
     }
@@ -54,7 +58,7 @@ export const Register = () => {
                 <CardHeader>
                     <CardTitle className="text-center py-4">Register Page</CardTitle>
                 </CardHeader>
-                <CardContent className="px-4">
+                <CardContent className="px-16">
                     <Form {...registerForm}>
                         <form onSubmit={registerForm.handleSubmit(onSubmit)} className="space-y-8">
                             <FormField
