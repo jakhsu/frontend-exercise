@@ -272,7 +272,7 @@ export const Posts = () => {
                 <Pagination className="">
                     <PaginationContent>
                         {
-                            Array.from({ length: allPostsResponse?.totalPages || 0 }).map((_, index) => (
+                            Array.from({ length: allMyPostsResponse?.totalPages || 0 }).map((_, index) => (
                                 <PaginationItem key={index}>
                                     <PaginationLink className={cn("bg-white", { "bg-primary": currentPage === (index + 1) })} isActive={
                                         currentPage === (index + 1)
