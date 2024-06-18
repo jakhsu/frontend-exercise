@@ -50,13 +50,13 @@ export const Register = () => {
 
     return (
         <>
-            <Card className="w-fit">
+            <Card className="max-w-xl w-full">
                 <CardHeader>
                     <CardTitle className="text-center py-4">Register Page</CardTitle>
                 </CardHeader>
-                <CardContent className="px-24">
+                <CardContent className="px-4">
                     <Form {...registerForm}>
-                        <form onSubmit={registerForm.handleSubmit(onSubmit)} className="space-y-8 w-96">
+                        <form onSubmit={registerForm.handleSubmit(onSubmit)} className="space-y-8">
                             <FormField
                                 control={registerForm.control}
                                 name="username"

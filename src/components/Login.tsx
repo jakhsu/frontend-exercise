@@ -48,13 +48,13 @@ export const Login = () => {
 
     return (
         <>
-            <Card className="w-fit">
+            <Card className="max-w-xl w-full">
                 <CardHeader>
                     <CardTitle className="text-center py-4">Login Page</CardTitle>
                 </CardHeader>
-                <CardContent className="px-24">
+                <CardContent className="px-4">
                     <Form {...loginForm}>
-                        <form onSubmit={loginForm.handleSubmit(onSubmit)} className="space-y-8 w-96">
+                        <form onSubmit={loginForm.handleSubmit(onSubmit)} className="space-y-8">
                             <FormField
                                 control={loginForm.control}
                                 name="email"
