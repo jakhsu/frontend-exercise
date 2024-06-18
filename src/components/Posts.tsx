@@ -230,13 +230,12 @@ export const Posts = () => {
 
     return (
         <>
-            <div className="w-full h-full flex gap-y-4 flex-col items-center">
+            <div className="w-full max-w-[230px] md:max-w-[492px] lg:max-w-[754px]  h-full flex gap-y-4 flex-col items-center">
                 <ActionHeader action={() => {
                     setNewPostModalOpen(true)
                 }} actionBtnText="Add New Post" />
                 Post List
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
+                <div className="w-full place-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {role === 'admin' && (<><OverviewCard
                         title="Total Account"
                         value={accounts?.length}
