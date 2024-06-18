@@ -219,6 +219,15 @@ export const Posts = () => {
         }
     }, [currentPost, editPostForm]);
 
+    useEffect(() => {
+        if (newPostForm.formState.isSubmitSuccessful) {
+            newPostForm.reset();
+        }
+        if (editPostForm.formState.isSubmitSuccessful) {
+            editPostForm.reset();
+        }
+    }, [newPostForm.formState.isSubmitSuccessful, editPostForm.formState.isSubmitSuccessful])
+
 
     return (
         <>
