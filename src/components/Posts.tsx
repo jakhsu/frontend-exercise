@@ -189,7 +189,7 @@ export const Posts = () => {
             if (role === 'user') {
                 token && getAllMyPosts(token, currentPage, 9).then(response => {
                     const typedResponse = response.data as AllPostResponse;
-                    setAllPostsResponse(typedResponse);
+                    setAllMyPostsResponse(typedResponse);
                 })
             } else if (role === 'admin') {
                 token && getAllPosts(token, currentPage, 6).then(response => {
@@ -254,7 +254,7 @@ export const Posts = () => {
                         /> </>)}
 
                     {
-                        allPostsResponse?.data.map((post) => (
+                        allMyPostsResponse?.data.map((post) => (
                             <PostCard key={post.id} post={post} onEdit={(post) => {
                                 setCurrentPost(post)
                                 setEditPostModalOpen(true)
