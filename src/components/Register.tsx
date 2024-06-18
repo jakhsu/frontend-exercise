@@ -9,13 +9,21 @@ import { Button } from "./ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
 import { Input } from "./ui/input";
 import { SuccessModal } from "./SuccessModal";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { Badge } from "./ui/badge";
+import { ChevronsUpDown } from "lucide-react";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "./ui/command";
 
 export const Register = () => {
     const [successModalOpen, setSuccessModalOpen] = useState(false);
     const [registerResponseMsg, setRegisterResponseMsg] = useState("");
     const authContext = useContext(AuthContext);
 
-    const allowedRoles = ["user", "admin"] as const
+    const allowedRoles = [
+        { label: "Admin", value: "admin" },
+        { label: "User", value: "user" },
+    ] as const
+
 
     const registerFormSchema = z.object({
         username: z.string(),
@@ -23,7 +31,9 @@ export const Register = () => {
         password: z.string().min(6, {
             message: "Password must be at least 6 characters long"
         }),
-        role: z.enum(allowedRoles)
+        role: z.string().refine((role) => allowedRoles.some((allowedRole) => allowedRole.value === role), {
+            message: "Role must be either 'admin' or 'user'"
+        })
     })
 
     const navigate = useNavigate();
@@ -106,9 +116,46 @@ export const Register = () => {
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Role</FormLabel>
-                                        <FormControl>
-                                            <Input className="rounded-full border-primary border-[1.77px]" {...field} />
-                                        </FormControl>
+                                        <Popover>
+                                            <PopoverTrigger asChild>
+                                                <FormControl>
+                                                    <div className="flex p-2 items-center justify-between rounded-xl border-primary border-[1.77px]">
+                                                        {field.value?.length > 0 ? (
+                                                            <div className="flex gap-2 flex-wrap">
+                                                                <Badge variant={'muted'} className="hover:bg-primary">
+                                                                    {field.value}
+                                                                </Badge>
+                                                            </div>
+
+                                                        ) : (
+                                                            <span className="text-muted-foreground justify-end">Select Tags</span>
+                                                        )}
+                                                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                                    </div>
+                                                </FormControl>
+                                            </PopoverTrigger>
+                                            <PopoverContent align="end" className="w-full p-0">
+                                                <Command>
+                                                    <CommandInput placeholder="Search tags..." />
+                                                    <CommandEmpty>No tag found.</CommandEmpty>
+                                                    <CommandGroup>
+                                                        <CommandList>
+                                                            {allowedRoles.map((role) => (
+                                                                <CommandItem
+                                                                    value={role.label}
+                                                                    key={role.value}
+                                                                    onSelect={() => {
+                                                                        field.onChange(role.value);
+                                                                    }}
+                                                                >
+                                                                    {role.label}
+                                                                </CommandItem>
+                                                            ))}
+                                                        </CommandList>
+                                                    </CommandGroup>
+                                                </Command>
+                                            </PopoverContent>
+                                        </Popover>
                                         <FormMessage />
                                     </FormItem>
                                 )}
